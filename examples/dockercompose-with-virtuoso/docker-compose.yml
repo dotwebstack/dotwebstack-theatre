@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  virtuoso:
+    container_name: virtuoso
+    build:
+      context: virtuoso
+    ports:
+      - "1111:1111"
+      - "8890:8890"
+    environment:
+      DBA_PASSWORD: "dba"
+      SPARQL_UPDATE: "true"
+      VIRTUOSO_DBA_PWD: anysecretpasswordreplacethiswithyours
+    volumes:
+      - ./virtuoso_data:/var/lib/virtuoso/db:z
+  ldt:
+    image: dotwebstack/dotwebstack-theatre
+    ports:
+      - "80:8080"
+    volumes:
+      - $PWD/config-docker:/opt/config

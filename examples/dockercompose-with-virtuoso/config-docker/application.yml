@@ -1,0 +1,10 @@
+spring:
+  jersey:
+    type: filter
+
+logging.level:
+  org.dotwebstack.framework: DEBUG
+
+dotwebstack:
+  config:
+    resourcePath: file:/opt/config

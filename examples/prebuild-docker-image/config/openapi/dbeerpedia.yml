@@ -1,0 +1,25 @@
+swagger: 2.0
+info:
+  title: DBeerPedia API
+  version: 1.0
+host: localhost
+basePath: /dbp/api/v1
+produces:
+  - application/json
+paths:
+  /breweries:
+    get:
+      x-dotwebstack-information-product: "http://dbeerpedia.org#Breweries"
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+  /breweries/{id}:
+    get:
+      x-dotwebstack-information-product: "http://dbeerpedia.org#Breweries"
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
