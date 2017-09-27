@@ -1,6 +1,8 @@
 language: java
 jdk:
 - oraclejdk8
+script:
+  - mvn clean -B package
 deploy:
   provider: releases
   api_key:
