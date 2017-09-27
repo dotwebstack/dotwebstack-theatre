@@ -1,9 +1,10 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 deploy:
   provider: releases
-  api_key: "$GITHUB_OAUTH_TOKEN"
-  skip_cleanup: true
+  api_key:
+    secure: UemuOxjZQ9vLdu2kzB2ZACXMsP+X2q+YJGyuZsOWs2DmLpFzB58t6FNw27I6xXZs1yixiusxXpZmBSzMF+zD0qfromQW/X0xxu9tjS0/bFNRNYP83RsTnr8F9ZL96rpb98/xet99NP0+OaAvFLdEcFwls2b3yQxw0fe8Oz41QzXUxXxW5MnzPFUx9T0WVzVi52IelfAdlWuX7owLFQ1Uxwn9xaNb/Ne7fdtsL8jd8jLkiy/Qy1TuP5VjbyXP/I/UlBZQe+nAGs4b/KrIXs2BTscbIw7z9Y3kigLx3T+Y4G1eJtuwUSnqRLPJ5sHbBGAz8eUE1PzTRLJXPNR+mHH1i2Etz2CAc4WiC2yOwJF3hUFTJyhYHXNZpp1Lg5PcS9TAYuv6bqK28Q1sWELXf/dHOq9/T+FEdYtmBcA7KeZeBWCl0e8OYnvnXvuxYSRZ8dqtQf6xIsT3aJZ5R6HRilu+0WjipkdjwcddaWzxLrZTXCexNzt+6ysMnaspG2cpMXNEbfdvHyjKOssxTcdfEBkFCOqhI93M8btDoQ5kTW/UIGd7Rc5L5OTvYYocwJhCmXEdUrEBETpIE6D6UYPOJlx/oj9cpud+5A+yNMGuYIkqXwLub9IAaISg/WWz/Ph8MAapyupniRTR0VFdBtsCUS1gacVvHdMmgdwC/8JL5zh4jow=
+  file: target/dotwebstack-theatre-*.jar
   on:
-    tags: true
+    repo: dotwebstack/dotwebstack-theatre
