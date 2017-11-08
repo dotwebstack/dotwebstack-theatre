@@ -4,9 +4,24 @@ A reference implementation of the DotWebStack Framework, based on the most commo
 
 [![Build Status](https://travis-ci.org/dotwebstack/dotwebstack-theatre.svg?branch=master)](https://travis-ci.org/dotwebstack/dotwebstack-theatre)
 
+All generic dotwebstack documentation can be found in [https://github.com/dotwebstack/dotwebstack].
+
 ## Run application
 
+### Configuration
+
+DotWebStack Theatre needs several configuration files. Preferably they should be stored in a config directory. These config files are:
+1. application properties file (e.g. application.yml). This file is not necessarily required, but most likely you would like to set the config dir and logging level.
+2. all model/trig files required to configure your DotWebStack Theatre. They should be stored in the a model directory.
+3. the Open API/Swagger file. This yml file should be stored in the openapi directory.
+
+More information about the configuration can be found in [https://github.com/dotwebstack/dotwebstack].
+
 ### Run with profile (.jar)
+
+Prerequisites:
+- A config directory with configuration files (see above) in the startup directory.
+- Java 8 installed.
 
 ```bash
 $ java -jar -Dspring.profiles.active=development dotwebstack-theatre-0.0.1-SNAPSHOT.jar
@@ -21,11 +36,6 @@ $ java -jar dotwebstack-theatre-0.0.1-SNAPSHOT.jar
 This will run the application in default profile mode (production).
 
 ### Run with prebuild docker image
-
-DotWebStack Theatre needs several configuration files. Preferably they should be stored in a config directory. These config files are:
-1. application properties file (e.g. application.yml). This file is not necessarily required, but most likely you would like to set the config dir and logging level.
-2. all model/trig files required to configure your DotWebStack Theatre. They should be stored in the a model directory.
-3. the Open API/Swagger file. This yml file should be stored in the openapi directory.
 
 An example setup can be found in examples/prebuild-docker-image. To run this (this configuration assumes there is a virtuoso backend running with container name virtuoso at port 8890) execute the following steps:
 
