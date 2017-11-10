@@ -80,7 +80,6 @@ Set property dotwebstack.framework.version in the pom.xml to the newest stable d
 
 ```
 mvn release:prepare
-mvn release:perform
 ```
 
 Clean up afterwards:
@@ -88,6 +87,11 @@ Clean up afterwards:
 ```
 mvn release:clean
 ```
+
+Currently the docker hub automated build is not started after a new release (a bug) so the automated build has the started manually.
+1. Goto https://hub.docker.com/r/dotwebstack/dotwebstack-theatre/~/settings/automated-builds/
+2. Adapt last line: type=tag, name=vx.y.z, docker tag name=latest
+3. Press trigger: now 2 builds should be started (last version and latest). Check build details tab.
 
 ## License
 
