@@ -4,7 +4,7 @@
 
   <groupId>org.dotwebstack.theatre</groupId>
   <artifactId>dotwebstack-theatre</artifactId>
-  <version>0.0.11-SNAPSHOT</version>
+  <version>0.0.11</version>
   <packaging>jar</packaging>
 
   <name>dotwebstack-theatre</name>
@@ -21,7 +21,7 @@
   <scm>
     <developerConnection>scm:git:git@github.com:dotwebstack/dotwebstack-theatre.git
     </developerConnection>
-    <tag>HEAD</tag>
+    <tag>v0.0.11</tag>
   </scm>
 
   <properties>
