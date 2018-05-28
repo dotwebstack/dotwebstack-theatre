@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class UserRepository {
 
   private String authentication;
+  private String loginPage = "";
   private List<User> users = new ArrayList<User>();
   private List<ProtectedPath> protect = new ArrayList<ProtectedPath>();
   
@@ -20,7 +21,15 @@ public class UserRepository {
   public String getAuthentication() {
     return authentication;
   }
-  
+
+  public void setLoginPage(String loginPage) {
+    this.loginPage = loginPage;
+  }
+
+  public String getLoginPage() {
+    return loginPage;
+  }
+
   public static class User {
 
     private String user;

@@ -34,15 +34,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .httpBasic();
     }
     if (userRepository.getAuthentication().equals("form")) {
+      String loginPage = userRepository.getLoginPage();
+      if (loginPage.equals("")) {
+        loginPage = "/login";
+      }
       CsrfTokenResponseHeaderBindingFilter csrfTokenFilter =
           new CsrfTokenResponseHeaderBindingFilter();
       http
         .authorizeRequests()
           .and()
-        //.csrf().disable()
-        //For now: disable crsf (our login page can't handle this at this moment)
+        .csrf().disable()
+        //For now: disable crsf (login page works OK, but PUT/POST give 405 in such cases :-()
         .formLogin()
-          .loginPage("/login");
+          .loginPage(loginPage);
         //to expose the _csrf value in the reponse field
         //http.addFilterAfter(csrfTokenFilter, CsrfFilter.class);
     }
