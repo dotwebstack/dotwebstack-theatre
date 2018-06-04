@@ -27,28 +27,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     for (UserRepository.ProtectedPath path : userRepository.getProtect()) {
       http.authorizeRequests().antMatchers(path.getPath()).hasAuthority(path.getRole());
     }
-    if (userRepository.getAuthentication().equals("basic")) {
-      http
-        .authorizeRequests()
-          .and()
-        .httpBasic();
-    }
-    if (userRepository.getAuthentication().equals("form")) {
-      String loginPage = userRepository.getLoginPage();
-      if (loginPage.equals("")) {
-        loginPage = "/login";
+    String authentication = userRepository.getAuthentication();
+    if (authentication != null) {
+      if (authentication.equals("basic")) {
+        http
+          .authorizeRequests()
+            .and()
+          .httpBasic();
       }
-      CsrfTokenResponseHeaderBindingFilter csrfTokenFilter =
-          new CsrfTokenResponseHeaderBindingFilter();
-      http
-        .authorizeRequests()
-          .and()
-        .csrf().disable()
-        //For now: disable crsf (login page works OK, but PUT/POST give 405 in such cases :-()
-        .formLogin()
-          .loginPage(loginPage);
-        //to expose the _csrf value in the reponse field
-        //http.addFilterAfter(csrfTokenFilter, CsrfFilter.class);
+      if (authentication.equals("form")) {
+        String loginPage = userRepository.getLoginPage();
+        if ((loginPage == null) || loginPage.equals("")) {
+          loginPage = "/login";
+        }
+        CsrfTokenResponseHeaderBindingFilter csrfTokenFilter =
+            new CsrfTokenResponseHeaderBindingFilter();
+        http
+          .authorizeRequests()
+            .and()
+          .csrf().disable()
+          //For now: disable crsf (login page works OK, but PUT/POST give 405 in such cases :-()
+          .formLogin()
+            .loginPage(loginPage);
+          //to expose the _csrf value in the reponse field
+          //http.addFilterAfter(csrfTokenFilter, CsrfFilter.class);
+      }
     }
   }
 
